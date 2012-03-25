@@ -1,0 +1,14 @@
+This is a simulation of a mobile communication system.
+
+Three types of events should be handled by the simulator:
+- Call initiation [time, speed, station, position, duration]
+- Call termination [time, station]
+- Call handover [time, speed, station, duration]
+
+States:
+- 20 base stations,
+- 10 channels each (busy/free)
+- Statistics to be collected:
+- Handovers
+- Dropped calls
+- Blocked calls
