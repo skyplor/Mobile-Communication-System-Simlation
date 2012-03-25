@@ -10,7 +10,9 @@ package model;
  */
 public class InitiateCall extends Event
 {
-    public InitiateCall(Car car) {
+
+    public InitiateCall(Car car)
+    {
         super(car);
     }
 }

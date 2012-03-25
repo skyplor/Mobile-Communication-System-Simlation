@@ -27,10 +27,12 @@ import simulation.Statistics;
 public class SimulationTest
 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         FileWriter fw = null;
         String newLine = System.getProperty("line.separator");
-        String usage = "USAGE: java XPhone [seed] [length] [replication] [warm-up] [channel] [reserved]" + newLine
+        String usage = "USAGE: Start Program using the following command:" + newLine
+                + " java SimulationTest [seed] [length] [replication] [warm-up] [channel] [reserved]" + newLine
                 + "seed: The seed for the simulation random number generators" + newLine
                 + "length: The time length in seconds of each replication of the simulation" + newLine
                 + "replication: The number of replications" + newLine
@@ -55,7 +57,7 @@ public class SimulationTest
             int reserved = Integer.parseInt(args[i++]);
             Properties prop = new Properties();
 
-            prop.load(new FileInputStream("data/xphone.properties"));
+            prop.load(new FileInputStream("data/simulation.properties"));
             double hwLength = Double.parseDouble(prop.getProperty("highway-length"));
             int stations = Integer.parseInt(prop.getProperty("base-stations"));
             double bcQos = Double.parseDouble(prop.getProperty("blocked-call-qos"));
@@ -77,7 +79,7 @@ public class SimulationTest
             params += "Call interarrival mean = " + expIaMean + newLine;
 
 
-            ArrayList<Future<Statistics>> statistics = new ArrayList<Future<Statistics>>();
+            ArrayList<Future<Statistics>> statistics = new ArrayList<>();
             ExecutorService es = java.util.concurrent.Executors.newFixedThreadPool(replication);
             RNG rng = new RNG(seed);
             for (int j = 1; j <= replication; j++) {
@@ -94,7 +96,7 @@ public class SimulationTest
             int accTc = 0;
             double accBcp = 0;
             double accDcp = 0;
-            ArrayList<Statistics> results = new ArrayList<Statistics>();
+            ArrayList<Statistics> results = new ArrayList<>();
             String output = newLine + (new java.util.Date()).toString() + newLine;
             String console = "";
             output += params;
@@ -107,23 +109,15 @@ public class SimulationTest
                     accTc += s.getTotalCalls();
                     accBcp += s.getBlockedCallsPercentage();
                     accDcp += s.getDroppedCallsPercentage();
-                    console += ("Replica #" + s.getReplicaId() + newLine);
+                    console += ("Replication #" + s.getReplicaId() + newLine);
                     console += ("Total calls: " + s.getTotalCalls() + newLine);
                     console += ("Dropped calls: " + s.getDroppedCalls() + newLine);
                     console += ("Blocked calls: " + s.getBlockedCalls() + newLine);
                     console += ("Dropped calls percentage: %" + df.format(s.getDroppedCallsPercentage()) + newLine);
                     console += ("Blocked calls percentage: %" + df.format(s.getBlockedCallsPercentage()) + newLine);
                     console += ("__________________________________" + newLine);
-//                    output += ("Replica #" + s.getReplicaId() + newLine);
-//                    output += ("Total calls: " + s.getTotalCalls() + newLine);
-//                    output += ("Dropped calls: " + s.getDroppedCalls() + newLine);
-//                    output += ("Blocked calls: " + s.getBlockedCalls() + newLine);
-//                    output += ("Dropped calls percentage: %" + df.format(s.getDroppedCallsPercentage()) + newLine);
-//                    output += ("Blocked calls percentage: %" + df.format(s.getBlockedCallsPercentage()) + newLine);
-//                    output += ("__________________________________" + newLine);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
+                }
+                catch (InterruptedException | ExecutionException ex) {
                     Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -156,12 +150,15 @@ public class SimulationTest
             System.out.println(console + output);
             fw = new FileWriter("data/output.txt", true);
             fw.write(output);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+        }
+        finally {
             try {
                 fw.close();
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
                 Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

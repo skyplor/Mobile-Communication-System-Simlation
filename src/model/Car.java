@@ -10,13 +10,15 @@ package model;
  */
 public class Car
 {
+
     private int id;
     private double time;
     private double position;
     private double duration;
     private double speed;
 
-    public Car(int id, double callArrivalTime, double callPosition, double callDuration, double drivingSpeed) {
+    public Car(int id, double callArrivalTime, double callPosition, double callDuration, double drivingSpeed)
+    {
         this.id = id;
         this.time = callArrivalTime;
         this.position = callPosition * 1000;
@@ -25,48 +27,59 @@ public class Car
 
     }
 
-    public double getDuration() {
+    public double getDuration()
+    {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(double duration)
+    {
         this.duration = duration;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public double getPosition() {
+    public double getPosition()
+    {
         return position;
     }
 
-    public void setPosition(double position) {
+    public void setPosition(double position)
+    {
         this.position = position;
     }
 
-    public double getSpeed() {
+    public double getSpeed()
+    {
         return speed;
     }
 
-    public void setSpeed(double speed) {
+    public void setSpeed(double speed)
+    {
         this.speed = speed;
     }
 
-    public double getTime() {
+    public double getTime()
+    {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(double time)
+    {
         this.time = time;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Car{" + "id=" + id + ", time=" + time + ", position=" + position + ", duration=" + duration + ", speed=" + speed + '}';
     }
 }

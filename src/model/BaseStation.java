@@ -12,7 +12,8 @@ import java.util.ArrayList;
  */
 public class BaseStation
 {
-   private int id;
+
+    private int id;
     private ArrayList<Car> channels;
     private int freeChannels;
     private ArrayList<Car> handoverChannels;
@@ -24,7 +25,8 @@ public class BaseStation
     private int droppedCalls;
     private int blockedCalls;
 
-    public BaseStation(int id, int channels, int handoverChannels, double position, double coverage) {
+    public BaseStation(int id, int channels, int handoverChannels, double position, double coverage)
+    {
         this.id = id;
         this.channels = new ArrayList<Car>();
         this.handoverChannels = new ArrayList<Car>();
@@ -38,25 +40,29 @@ public class BaseStation
         this.blockedCalls = 0;
     }
 
-    public Event initiateCall(Car c) {
+    public Event initiateCall(Car c)
+    {
         Event result = null;
         if (freeChannels > 0) {
             result = manipulateCall(c);
             channels.add(c);
             freeChannels--;
-        } else {
+        }
+        else {
             result = new BlockCall(c, this);
         }
         return result;
     }
 
-    public Event passHandover(Car c, BaseStation b) {
+    public Event passHandover(Car c, BaseStation b)
+    {
         Event result = null;
         if (channels.contains(c)) {
             channels.remove(c);
             freeChannels++;
             result = b.receiveHandover(c);
-        } else if (handoverChannels.contains(c)) {
+        }
+        else if (handoverChannels.contains(c)) {
             handoverChannels.remove(c);
             freeHandoverChannels++;
             result = b.receiveHandover(c);
@@ -64,34 +70,40 @@ public class BaseStation
         return result;
     }
 
-    private Event receiveHandover(Car c) {
+    private Event receiveHandover(Car c)
+    {
         Event result = null;
         if (freeChannels > 0) {
             result = manipulateCall(c);
             channels.add(c);
             freeChannels--;
-        } else if (freeHandoverChannels > 0) {
+        }
+        else if (freeHandoverChannels > 0) {
             result = manipulateCall(c);
             handoverChannels.add(c);
             freeHandoverChannels--;
-        } else {
+        }
+        else {
             result = new DropCall(c, this);
         }
         return result;
 
     }
 
-    public void endCall(Car c) {
+    public void endCall(Car c)
+    {
         if (channels.contains(c)) {
             channels.remove(c);
             freeChannels++;
-        } else if (handoverChannels.contains(c)) {
+        }
+        else if (handoverChannels.contains(c)) {
             handoverChannels.remove(c);
             freeHandoverChannels++;
         }
     }
 
-    private Event manipulateCall(Car c) {
+    private Event manipulateCall(Car c)
+    {
         Event result = null;
         double speed = c.getSpeed();
         double callPosition = c.getPosition();
@@ -106,7 +118,8 @@ public class BaseStation
             c.setTime(arrivalTime);
             c.setPosition(coverageEnd);
             result = new HandOver(c, this);
-        } else {
+        }
+        else {
             arrivalTime += duration;
             c.setTime(arrivalTime);
             result = new EndCall(c, this);
@@ -114,104 +127,129 @@ public class BaseStation
         return result;
     }
 
-    public void dropCall() {
+    public void dropCall()
+    {
         droppedCalls++;
     }
 
-    public void blockCall() {
+    public void blockCall()
+    {
         blockedCalls++;
     }
 
-    public int getBlockedCalls() {
+    public int getBlockedCalls()
+    {
         return blockedCalls;
     }
 
-    public void setBlockedCalls(int blockedCalls) {
+    public void setBlockedCalls(int blockedCalls)
+    {
         this.blockedCalls = blockedCalls;
     }
 
-    public ArrayList<Car> getChannels() {
+    public ArrayList<Car> getChannels()
+    {
         return channels;
     }
 
-    public void setChannels(ArrayList<Car> channels) {
+    public void setChannels(ArrayList<Car> channels)
+    {
         this.channels = channels;
     }
 
-    public double getCoverage() {
+    public double getCoverage()
+    {
         return coverage;
     }
 
-    public void setCoverage(double coverage) {
+    public void setCoverage(double coverage)
+    {
         this.coverage = coverage;
     }
 
-    public int getDroppedCalls() {
+    public int getDroppedCalls()
+    {
         return droppedCalls;
     }
 
-    public void setDroppedCalls(int droppedCalls) {
+    public void setDroppedCalls(int droppedCalls)
+    {
         this.droppedCalls = droppedCalls;
     }
 
-    public int getFreeChannels() {
+    public int getFreeChannels()
+    {
         return freeChannels;
     }
 
-    public void setFreeChannels(int freeChannels) {
+    public void setFreeChannels(int freeChannels)
+    {
         this.freeChannels = freeChannels;
     }
 
-    public int getFreeHandoverChannels() {
+    public int getFreeHandoverChannels()
+    {
         return freeHandoverChannels;
     }
 
-    public void setFreeHandoverChannels(int freeHandoverChannels) {
+    public void setFreeHandoverChannels(int freeHandoverChannels)
+    {
         this.freeHandoverChannels = freeHandoverChannels;
     }
 
-    public ArrayList<Car> getHandoverChannels() {
+    public ArrayList<Car> getHandoverChannels()
+    {
         return handoverChannels;
     }
 
-    public void setHandoverChannels(ArrayList<Car> handoverChannels) {
+    public void setHandoverChannels(ArrayList<Car> handoverChannels)
+    {
         this.handoverChannels = handoverChannels;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public double getPosition() {
+    public double getPosition()
+    {
         return position;
     }
 
-    public void setPosition(double position) {
+    public void setPosition(double position)
+    {
         this.position = position;
     }
 
-    public double getCoverageEnd() {
+    public double getCoverageEnd()
+    {
         return coverageEnd;
     }
 
-    public void setCoverageEnd(double coverageEnd) {
+    public void setCoverageEnd(double coverageEnd)
+    {
         this.coverageEnd = coverageEnd;
     }
 
-    public double getCoverageStart() {
+    public double getCoverageStart()
+    {
         return coverageStart;
     }
 
-    public void setCoverageStart(double coverageStart) {
+    public void setCoverageStart(double coverageStart)
+    {
         this.coverageStart = coverageStart;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "BaseStation{" + "id=" + id + ", freeChannels=" + freeChannels + ", freeHandoverChannels=" + freeHandoverChannels + '}';
     }
 }

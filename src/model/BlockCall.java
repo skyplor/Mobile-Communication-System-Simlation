@@ -10,18 +10,22 @@ package model;
  */
 public class BlockCall extends Event
 {
-     private BaseStation at;
 
-    public BlockCall(Car car, BaseStation at) {
+    private BaseStation at;
+
+    public BlockCall(Car car, BaseStation at)
+    {
         super(car);
         this.at = at;
     }
 
-    public BaseStation getAt() {
+    public BaseStation getAt()
+    {
         return at;
     }
 
-    public void setAt(BaseStation at) {
+    public void setAt(BaseStation at)
+    {
         this.at = at;
     }
 }

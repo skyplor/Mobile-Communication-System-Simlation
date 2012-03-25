@@ -10,57 +10,71 @@ package model;
  */
 public class Event
 {
+
     private Car car;
 
-    public Event(Car car) {
+    public Event(Car car)
+    {
         this.car = car;
     }
 
-    public Car getCar() {
+    public Car getCar()
+    {
         return car;
     }
 
-    public void setCustomer(Car car) {
+    public void setCustomer(Car car)
+    {
         this.car = car;
     }
 
-    public void setTime(double time) {
+    public void setTime(double time)
+    {
         car.setTime(time);
     }
 
-    public void setSpeed(double speed) {
+    public void setSpeed(double speed)
+    {
         car.setSpeed(speed);
     }
 
-    public void setPosition(double position) {
+    public void setPosition(double position)
+    {
         car.setPosition(position);
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         car.setId(id);
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(double duration)
+    {
         car.setDuration(duration);
     }
 
-    public double getTime() {
+    public double getTime()
+    {
         return car.getTime();
     }
 
-    public double getSpeed() {
+    public double getSpeed()
+    {
         return car.getSpeed();
     }
 
-    public double getPosition() {
+    public double getPosition()
+    {
         return car.getPosition();
     }
 
-    public int getId() {
+    public int getId()
+    {
         return car.getId();
     }
 
-    public double getDuration() {
+    public double getDuration()
+    {
         return car.getDuration();
     }
 }
