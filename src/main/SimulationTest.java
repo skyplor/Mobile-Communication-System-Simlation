@@ -32,27 +32,21 @@ public class SimulationTest
         FileWriter fw = null;
         String newLine = System.getProperty("line.separator");
         String usage = "USAGE: Start Program using the following command:" + newLine
-                + " java SimulationTest [seed] [length] [replication] [warm-up] [channel] [reserved]" + newLine
-                + "seed: The seed for the simulation random number generators" + newLine
+                + " java SimulationTest [length] [replication] [warm-up] [channel] [reserved]" + newLine
                 + "length: The time length in seconds of each replication of the simulation" + newLine
                 + "replication: The number of replications" + newLine
-                + "warm-up: The warm-up period in seconds" + newLine
                 + "channel: The number of channels in each base station" + newLine
                 + "reserved: The number of reserved channels for handovers in each base station" + newLine;
         try {
-            if (args.length != 6) {
+            if (args.length != 4) {
                 System.out.print(usage);
                 System.exit(-1);
             }
 
             int i = 0;
-            long seed = Long.parseLong(args[i++]);
-            if (seed == -1) {
-                seed = System.currentTimeMillis();
-            }
+            long seed = System.currentTimeMillis();
             double length = Double.parseDouble(args[i++]);
             int replication = Integer.parseInt(args[i++]);
-            double warmup = Double.parseDouble(args[i++]);
             int channels = Integer.parseInt(args[i++]);
             int reserved = Integer.parseInt(args[i++]);
             Properties prop = new Properties();
@@ -70,7 +64,6 @@ public class SimulationTest
             String params = "Seed = " + seed + newLine;
             params += "Length = " + length + newLine;
             params += "Replications = " + replication + newLine;
-            params += "Warm-up = " + warmup + newLine;
             params += "Channels = " + channels + newLine;
             params += "Reserved = " + reserved + newLine;
             params += "Call duration mean = " + expMean + newLine;
@@ -84,18 +77,19 @@ public class SimulationTest
             RNG rng = new RNG(seed);
             for (int j = 1; j <= replication; j++) {
                 Callable<Statistics> sim = new Simulator(stations, hwLength, channels,
-                        reserved, length, j, rng, warmup, normalM,
+                        reserved, length, j, rng, normalM,
                         expMean, normalStdev, expIaMean);
                 Future<Statistics> future = es.submit(sim);
                 statistics.add(future);
             }
 
             DecimalFormat df = new DecimalFormat("####.####");
-            int accDc = 0;
-            int accBc = 0;
-            int accTc = 0;
-            double accBcp = 0;
-            double accDcp = 0;
+            int accumDc = 0;
+            int accumBc = 0;
+            int accumTc = 0;
+            int accumHc = 0;
+            double accumBcp = 0;
+            double accumDcp = 0;
             ArrayList<Statistics> results = new ArrayList<>();
             String output = newLine + (new java.util.Date()).toString() + newLine;
             String console = "";
@@ -104,13 +98,15 @@ public class SimulationTest
                 try {
                     Statistics s = future.get();
                     results.add(s);
-                    accDc += s.getDroppedCalls();
-                    accBc += s.getBlockedCalls();
-                    accTc += s.getTotalCalls();
-                    accBcp += s.getBlockedCallsPercentage();
-                    accDcp += s.getDroppedCallsPercentage();
+                    accumDc += s.getDroppedCalls();
+                    accumBc += s.getBlockedCalls();
+                    accumTc += s.getTotalCalls();
+                    accumHc += s.getHandovers();
+                    accumBcp += s.getBlockedCallsPercentage();
+                    accumDcp += s.getDroppedCallsPercentage();
                     console += ("Replication #" + s.getReplicaId() + newLine);
                     console += ("Total calls: " + s.getTotalCalls() + newLine);
+                    console += ("Handover calls: " + s.getHandovers() + newLine);
                     console += ("Dropped calls: " + s.getDroppedCalls() + newLine);
                     console += ("Blocked calls: " + s.getBlockedCalls() + newLine);
                     console += ("Dropped calls percentage: %" + df.format(s.getDroppedCallsPercentage()) + newLine);
@@ -121,32 +117,38 @@ public class SimulationTest
                     Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            double avgTc = (double) (accTc / replication);
-            double avgDc = (double) (accDc / replication);
-            double avgBc = (double) (accBc / replication);
+            double avgTc = (double) (accumTc / replication);
+            double avgHc = (double) (accumHc / replication);
+            double avgDc = (double) (accumDc / replication);
+            double avgBc = (double) (accumBc / replication);
             double tcVar = 0;
             double dcVar = 0;
             double bcVar = 0;
+            double hcVar = 0;
 
             for (Statistics s : results) {
                 tcVar += Math.pow(avgTc - s.getTotalCalls(), 2);
+                hcVar += Math.pow(avgHc - s.getHandovers(), 2);
                 dcVar += Math.pow(avgDc - s.getDroppedCalls(), 2);
                 bcVar += Math.pow(avgBc - s.getBlockedCalls(), 2);
             }
             tcVar /= (replication - 1);
+            hcVar /= (replication - 1);
             dcVar /= (replication - 1);
             bcVar /= (replication - 1);
 
             output += ("Average total calls: " + df.format(avgTc) + newLine);
             output += ("Variance of total calls: " + tcVar + newLine);
+            output += ("Average handover calls: " + df.format(avgHc) + newLine);
+            output += ("Variance of handover calls: " + hcVar + newLine);
             output += ("Average total dropped calls: " + df.format(avgDc) + newLine);
             output += ("Variance of dropped calls: " + dcVar + newLine);
             output += ("Average total blocked calls: " + df.format(avgBc) + newLine);
             output += ("Variance of blocked calls: " + bcVar + newLine);
-            output += ("Average dropped calls percentage: %" + df.format(accDcp / replication)
-                    + ", QoS requirement (%" + (dcQos) + ") " + (dcQos >= (accDcp / replication) ? "SATISFIED" : "NOT SATISFIED") + newLine);
-            output += ("Average blocked calls percentage: %" + df.format(accBcp / replication)
-                    + ", QoS requirement (%" + (bcQos) + ") " + (bcQos >= (accBcp / replication) ? "SATISFIED" : "NOT SATISFIED") + newLine);
+            output += ("Average dropped calls percentage: %" + df.format(accumDcp / replication)
+                    + ", QoS requirement (%" + (dcQos) + ") " + (dcQos >= (accumDcp / replication) ? "SATISFIED" : "NOT SATISFIED") + newLine);
+            output += ("Average blocked calls percentage: %" + df.format(accumBcp / replication)
+                    + ", QoS requirement (%" + (bcQos) + ") " + (bcQos >= (accumBcp / replication) ? "SATISFIED" : "NOT SATISFIED") + newLine);
             System.out.println(console + output);
             fw = new FileWriter("data/output.txt", true);
             fw.write(output);

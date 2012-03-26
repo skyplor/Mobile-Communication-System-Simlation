@@ -29,7 +29,6 @@ public class Simulator implements Callable<Statistics>
     private double length;
     private int id;
     private RNG rng;
-    private double warmup;
     private double coverage;
     private double clock;
     private int totalCalls;
@@ -39,7 +38,7 @@ public class Simulator implements Callable<Statistics>
 
     public Simulator(int stations, double highwayLength, int channels,
             int reserved, double length, int id, RNG rng,
-            double warmup, double m, double mean, double stdev, double iaMean)
+            double m, double mean, double stdev, double iaMean)
     {
         this.stations = stations;
         this.highwayLength = highwayLength;
@@ -48,7 +47,6 @@ public class Simulator implements Callable<Statistics>
         this.length = length;
         this.id = id;
         this.rng = rng;
-        this.warmup = warmup;
         this.m = m;
         this.mean = mean;
         this.stdev = stdev;
@@ -57,7 +55,8 @@ public class Simulator implements Callable<Statistics>
         totalCalls = 0;
         baseStations = new ArrayList<>();
         coverage = highwayLength / stations;
-        for (int i = 0; i < stations; i++) {
+        for (int i = 0; i < stations; i++)
+        {
             double pos = ((i + 1) * coverage) - 1;
             baseStations.add(new BaseStation(i + 1, this.channels, this.reserved, pos, coverage));
         }
@@ -67,7 +66,7 @@ public class Simulator implements Callable<Statistics>
 
     private Event createCall()
     {
-        InitiateCall result = new InitiateCall(new Car(++totalCalls, clock + rng.nextExp(iaMean),
+        CallInitiation result = new CallInitiation(new Car(++totalCalls, clock + rng.nextExp(iaMean),
                 rng.nextUniform(highwayLength), rng.nextExp(mean),
                 rng.nextNormal(m, stdev)));
         return result;
@@ -84,10 +83,11 @@ public class Simulator implements Callable<Statistics>
         int windowSize = 10;
 
         ArrayList<WarmupStatistics> ws = new ArrayList<>();
-        try (FileWriter fw = new FileWriter("data/output" + this.id + ".txt", false)) {
-            double accTime;
-            double accDc;
-            double accBc;
+        try (FileWriter fw = new FileWriter("data/output" + this.id + ".txt", false))
+        {
+            double accumTime;
+            double accumDc;
+            double accumBc;
             NumberFormat nf = NumberFormat.getInstance();
             nf.setGroupingUsed(false);
             nf.setMinimumFractionDigits(4);
@@ -97,34 +97,40 @@ public class Simulator implements Callable<Statistics>
             fel.put(firstEvent.getTime(), firstEvent);
             boolean stopSimulation = false;
 
-            while (!fel.isEmpty()) {
+            while (!fel.isEmpty())
+            {
 
                 double key = fel.firstKey();
                 Event e = fel.remove(key);
                 clock = e.getTime();
 
-                if (ws.size() == windowSize) {
+                if (ws.size() == windowSize)
+                {
                     ws.remove(0);
                 }
                 ws.add(new WarmupStatistics(clock, blockedCalls, droppedCalls));
-                accTime = 0;
-                accDc = 0;
-                accBc = 0;
-                for (WarmupStatistics s : ws) {
-                    accTime += s.getTime();
-                    accDc += s.getDroppedCalls();
-                    accBc += s.getBlockedCalls();
+                accumTime = 0;
+                accumDc = 0;
+                accumBc = 0;
+                for (WarmupStatistics s : ws)
+                {
+                    accumTime += s.getTime();
+                    accumDc += s.getDroppedCalls();
+                    accumBc += s.getBlockedCalls();
                 }
 
-                fw.write(nf.format((double) accTime / ws.size()) + "\t" + nf.format((double) accDc / ws.size()) + "\t" + nf.format((double) accBc / ws.size()) + "\n");
+                fw.write(nf.format((double) accumTime / ws.size()) + "\t" + nf.format((double) accumDc / ws.size()) + "\t" + nf.format((double) accumBc / ws.size()) + "\n");
 
-                if (clock >= length) {
+                if (clock >= length)
+                {
                     stopSimulation = true;
                 }
 
-                if (e instanceof InitiateCall) {
+                if (e instanceof CallInitiation)
+                {
                     calls++;
-                    if (!stopSimulation) {
+                    if (!stopSimulation)
+                    {
                         Event ne = createCall();
                         fel.put(ne.getTime(), ne);
                     }
@@ -132,44 +138,61 @@ public class Simulator implements Callable<Statistics>
                     Event next = responsibleStation.initiateCall(e.getCar());
                     fel.put(next.getTime(), next);
                 }
-                else if (e instanceof HandOver) {
+                else if (e instanceof CallHandOver)
+                {
                     handovers++;
-                    HandOver h = (HandOver) e;
+                    CallHandOver h = (CallHandOver) e;
                     responsibleStation = h.getFrom();
+
+                    /*
+                     * To make the road a close loop so that all calls will be able to end as expected.
+                     * For example, a car starts from the last BaseStation and requires a handover. Without this close loop, the call will have to terminate unexpectedly.
+                     */
                     h.setPosition(h.getPosition() % (highwayLength * 1000));
                     Event next = responsibleStation.passHandover(e.getCar(), baseStations.get(responsibleStation.getId() % stations));
                     fel.put(next.getTime(), next);
                 }
-                else if (e instanceof EndCall) {
+                else if (e instanceof CallTermination)
+                {
                     endCalls++;
-                    EndCall ec = (EndCall) e;
+                    CallTermination ec = (CallTermination) e;
                     ec.getAt().endCall(e.getCar());
                 }
-                else if (e instanceof DropCall) {
+                else if (e instanceof DropCall)
+                {
                     droppedCalls++;
                     DropCall dc = (DropCall) e;
                     dc.getAt().dropCall();
                 }
-                else if (e instanceof BlockCall) {
+                else if (e instanceof BlockCall)
+                {
                     blockedCalls++;
                     BlockCall bc = (BlockCall) e;
                     bc.getAt().blockCall();
                 }
             }
+
         }
 
         int dc = 0, bc = 0;
-        for (BaseStation bs : baseStations) {
+        String newLine = System.getProperty("line.separator");
+        //System.out.println("Replication #" + id);
+        for (BaseStation bs : baseStations)
+        {
             dc += bs.getDroppedCalls();
             bc += bs.getBlockedCalls();
+            //System.out.println("BaseStation " + bs.getId() + ":" + newLine + "Dropped Calls: " + dc + newLine + "Blocked Calls: " + bc);
+
         }
         return new Statistics(id, droppedCalls, blockedCalls, calls, handovers, endCalls);
     }
 
     private void assignResponsible(Event e)
     {
-        for (BaseStation bs : baseStations) {
-            if (e.getPosition() >= bs.getCoverageStart() && e.getPosition() < bs.getCoverageEnd()) {
+        for (BaseStation bs : baseStations)
+        {
+            if (e.getPosition() >= bs.getCoverageStart() && e.getPosition() < bs.getCoverageEnd())
+            {
                 responsibleStation = bs;
                 break;
             }

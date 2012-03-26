@@ -8,12 +8,12 @@ package model;
  *
  * @author Sky
  */
-public class EndCall extends Event
+public class CallTermination extends Event
 {
 
     private BaseStation at;
 
-    public EndCall(Car car, BaseStation at)
+    public CallTermination(Car car, BaseStation at)
     {
         super(car);
         this.at = at;

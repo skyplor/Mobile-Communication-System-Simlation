@@ -8,12 +8,12 @@ package model;
  *
  * @author Sky
  */
-public class HandOver extends Event
+public class CallHandOver extends Event
 {
 
     private BaseStation from;
 
-    public HandOver(Car car, BaseStation from)
+    public CallHandOver(Car car, BaseStation from)
     {
         super(car);
         this.from = from;

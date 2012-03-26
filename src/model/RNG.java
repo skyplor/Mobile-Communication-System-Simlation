@@ -13,10 +13,7 @@ import java.util.Random;
 public class RNG
 {
 
-    private double R1;
-    private double R2;
     private Random rand;
-    private boolean flag = true;
 
     public RNG(long seed)
     {
@@ -45,7 +42,7 @@ public class RNG
     }
 
     /**
-     * Generated the next uniformly distributed event time on [0, b)
+     * Generates the next uniformly distributed value for the position of the car
      *
      * @param b Maximum range value
      * @return The next uniformly distributed value between 0 and b
@@ -57,7 +54,7 @@ public class RNG
     }
 
     /**
-     * Generates a normally distributed random value with mean m and standard deviation stdev.
+     * Generates a normally distributed random value with mean m and standard deviation stdev for the speed of the car
      *
      * @param m The mean value
      * @param stdev The standard deviation
@@ -66,17 +63,9 @@ public class RNG
     public synchronized double nextNormal(double m, double stdev)
     {
         double result;
-        double Z;
-        if (flag) {
-            R1 = nextRand();
-            R2 = nextRand();
-            Z = Math.sqrt(-2 * Math.log(R1)) * Math.cos(2 * Math.PI * R2);
-        }
-        else {
-            Z = Math.sqrt(-2 * Math.log(R1)) * Math.sin(2 * Math.PI * R2);
-        }
-        flag = !flag;
-        result = m + stdev * Z;
+
+        result = m + stdev * rand.nextGaussian();
+        
         return result;
     }
 }

@@ -8,10 +8,10 @@ package model;
  *
  * @author Sky
  */
-public class InitiateCall extends Event
+public class CallInitiation extends Event
 {
 
-    public InitiateCall(Car car)
+    public CallInitiation(Car car)
     {
         super(car);
     }

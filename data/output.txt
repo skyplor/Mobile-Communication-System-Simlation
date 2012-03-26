@@ -318,3 +318,964 @@ Average total blocked calls: 21
 Variance of blocked calls: 68.44444444444444
 Average dropped calls percentage: %0.261, QoS requirement (%1.0) SATISFIED
 Average blocked calls percentage: %1.1255, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 00:53:33 SGT 2012
+Seed = 123
+Length = 3600.0
+Replications = 10
+Warm-up = 60.0
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 1873
+Variance of total calls: 2432.6666666666665
+Average total dropped calls: 9
+Variance of dropped calls: 16.555555555555557
+Average total blocked calls: 19
+Variance of blocked calls: 29.77777777777778
+Average dropped calls percentage: %0.227, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0108, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 16:29:03 SGT 2012
+Seed = 123
+Length = 30.0
+Replications = 3
+Warm-up = 5.0
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 15
+Variance of total calls: 28.0
+Average total dropped calls: 0
+Variance of dropped calls: 0.0
+Average total blocked calls: 0
+Variance of blocked calls: 0.0
+Average dropped calls percentage: %0, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 16:29:03 SGT 2012
+Seed = 123
+Length = 30.0
+Replications = 3
+Warm-up = 5.0
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 15
+Variance of total calls: 3.0
+Average total dropped calls: 0
+Variance of dropped calls: 0.0
+Average total blocked calls: 0
+Variance of blocked calls: 0.0
+Average dropped calls percentage: %0, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:47:23 SGT 2012
+Seed = 123
+Length = 30.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 14
+Variance of total calls: 2.0
+Average total dropped calls: 0
+Variance of dropped calls: 0.0
+Average total blocked calls: 0
+Variance of blocked calls: 0.0
+Average dropped calls percentage: %0, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:47:55 SGT 2012
+Seed = 123
+Length = 7200.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 3734
+Variance of total calls: 13494.5
+Average total dropped calls: 18
+Variance of dropped calls: 30.5
+Average total blocked calls: 37
+Variance of blocked calls: 31.0
+Average dropped calls percentage: %0.2214, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0099, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:48:19 SGT 2012
+Seed = 123
+Length = 3600.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 1852
+Variance of total calls: 526.5
+Average total dropped calls: 8
+Variance of dropped calls: 37.0
+Average total blocked calls: 18
+Variance of blocked calls: 15.0
+Average dropped calls percentage: %0.1903, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0095, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:50:25 SGT 2012
+Seed = 123
+Length = 7200.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 3760
+Variance of total calls: 1290.5
+Average total dropped calls: 23
+Variance of dropped calls: 103.0
+Average total blocked calls: 48
+Variance of blocked calls: 183.0
+Average dropped calls percentage: %0.2839, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.2743, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:50:35 SGT 2012
+Seed = 123
+Length = 10800.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 5580
+Variance of total calls: 2214.5
+Average total dropped calls: 38
+Variance of dropped calls: 17.5
+Average total blocked calls: 64
+Variance of blocked calls: 74.5
+Average dropped calls percentage: %0.3129, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1536, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:50:43 SGT 2012
+Seed = 123
+Length = 14400.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 7474
+Variance of total calls: 22519.0
+Average total dropped calls: 40
+Variance of dropped calls: 52.0
+Average total blocked calls: 72
+Variance of blocked calls: 16.0
+Average dropped calls percentage: %0.2427, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.9636, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:51:05 SGT 2012
+Seed = 123
+Length = 18000.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 9330
+Variance of total calls: 15525.0
+Average total dropped calls: 53
+Variance of dropped calls: 223.0
+Average total blocked calls: 106
+Variance of blocked calls: 90.0
+Average dropped calls percentage: %0.2598, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1427, QoS requirement (%2.0) SATISFIED
+
+Mon Mar 26 19:52:35 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Channels = 10
+Reserved = 1
+Call duration mean = 154.8235
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.92669
+Average total calls: 11171
+Variance of total calls: 1861.5
+Average total dropped calls: 63
+Variance of dropped calls: 309.0
+Average total blocked calls: 120
+Variance of blocked calls: 17.5
+Average dropped calls percentage: %0.2601, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0771, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 00:39:22 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Warm-up = 20.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11655
+Variance of total calls: 18611.0
+Average total dropped calls: 63
+Variance of dropped calls: 313.0
+Average total blocked calls: 120
+Variance of blocked calls: 259.0
+Average dropped calls percentage: %0.2578, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0286, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 01:17:53 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Warm-up = 0.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11703
+Variance of total calls: 4742.0
+Average total dropped calls: 61
+Variance of dropped calls: 243.0
+Average total blocked calls: 129
+Variance of blocked calls: 144.0
+Average dropped calls percentage: %0.2528, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1021, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 01:22:22 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Warm-up = 30.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11645
+Variance of total calls: 1425.5
+Average total dropped calls: 56
+Variance of dropped calls: 133.0
+Average total blocked calls: 130
+Variance of blocked calls: 672.5
+Average dropped calls percentage: %0.2296, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1188, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 01:26:23 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Warm-up = 30.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11666
+Variance of total calls: 5546.5
+Average total dropped calls: 64
+Variance of dropped calls: 83.0
+Average total blocked calls: 127
+Variance of blocked calls: 791.0
+Average dropped calls percentage: %0.2652, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0935, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 01:32:43 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Warm-up = 30.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11636
+Variance of total calls: 6124.5
+Average total dropped calls: 57
+Variance of dropped calls: 93.0
+Average total blocked calls: 127
+Variance of blocked calls: 31.0
+Average dropped calls percentage: %0.2343, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.097, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 01:40:10 SGT 2012
+Seed = 123
+Length = 21600.0
+Replications = 3
+Warm-up = 30.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11644
+Variance of total calls: 8386.5
+Average total dropped calls: 59
+Variance of dropped calls: 91.0
+Average total blocked calls: 123
+Variance of blocked calls: 273.0
+Average dropped calls percentage: %0.2422, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0557, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:15:47 SGT 2012
+Seed = 1332789347814
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4922
+Variance of total calls: 7783.0
+Average total dropped calls: 35
+Variance of dropped calls: 38.0
+Average total blocked calls: 65
+Variance of blocked calls: 67.0
+Average dropped calls percentage: %0.3426, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.3334, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:17:41 SGT 2012
+Seed = 1332789461187
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4799
+Variance of total calls: 7099.0
+Average total dropped calls: 26
+Variance of dropped calls: 61.0
+Average total blocked calls: 51
+Variance of blocked calls: 112.0
+Average dropped calls percentage: %0.2539, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0605, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:18:14 SGT 2012
+Seed = 1332789494430
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4834
+Variance of total calls: 7611.0
+Average total dropped calls: 24
+Variance of dropped calls: 37.0
+Average total blocked calls: 49
+Variance of blocked calls: 121.0
+Average dropped calls percentage: %0.2349, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.0291, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:19:14 SGT 2012
+Seed = 1332789554618
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4880
+Variance of total calls: 918.0
+Average total dropped calls: 27
+Variance of dropped calls: 28.0
+Average total blocked calls: 59
+Variance of blocked calls: 31.0
+Average dropped calls percentage: %0.2602, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.2223, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:19:18 SGT 2012
+Seed = 1332789558134
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4866
+Variance of total calls: 11133.0
+Average total dropped calls: 31
+Variance of dropped calls: 70.0
+Average total blocked calls: 59
+Variance of blocked calls: 11.0
+Average dropped calls percentage: %0.3027, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.2264, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:19:22 SGT 2012
+Seed = 1332789562333
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4792
+Variance of total calls: 10561.0
+Average total dropped calls: 25
+Variance of dropped calls: 61.0
+Average total blocked calls: 44
+Variance of blocked calls: 48.0
+Average dropped calls percentage: %0.2487, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.9204, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:19:25 SGT 2012
+Seed = 1332789565684
+Length = 21600.0
+Replications = 3
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4909
+Variance of total calls: 4291.0
+Average total dropped calls: 39
+Variance of dropped calls: 13.0
+Average total blocked calls: 66
+Variance of blocked calls: 257.5
+Average dropped calls percentage: %0.3684, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.3484, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:20:13 SGT 2012
+Seed = 1332789613524
+Length = 21600.0
+Replications = 50
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4873
+Variance of total calls: 5626.775510204082
+Average total dropped calls: 27
+Variance of dropped calls: 49.04081632653061
+Average total blocked calls: 55
+Variance of blocked calls: 131.40816326530611
+Average dropped calls percentage: %0.2612, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1431, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:26:12 SGT 2012
+Seed = 1332789972465
+Length = 21600.0
+Replications = 50
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 4871
+Variance of total calls: 5561.040816326531
+Average total dropped calls: 29
+Variance of dropped calls: 73.51020408163265
+Average total blocked calls: 57
+Variance of blocked calls: 104.3265306122449
+Average dropped calls percentage: %0.2788, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1759, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:30:46 SGT 2012
+Seed = 1332790246165
+Length = 17200.0
+Replications = 200
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 2489
+Variance of total calls: 2550.4422110552764
+Average total dropped calls: 14
+Variance of dropped calls: 30.150753768844222
+Average total blocked calls: 27
+Variance of blocked calls: 43.57788944723618
+Average dropped calls percentage: %0.262, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1073, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:36:45 SGT 2012
+Seed = 1332790605019
+Length = 17200.0
+Replications = 200
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 2498
+Variance of total calls: 2594.954773869347
+Average total dropped calls: 14
+Variance of dropped calls: 32.321608040201006
+Average total blocked calls: 28
+Variance of blocked calls: 58.07035175879397
+Average dropped calls percentage: %0.2627, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1228, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:38:49 SGT 2012
+Seed = 1332790729598
+Length = 17200.0
+Replications = 200
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 2493
+Variance of total calls: 2828.8743718592964
+Average total dropped calls: 14
+Variance of dropped calls: 31.497487437185928
+Average total blocked calls: 28
+Variance of blocked calls: 53.22613065326633
+Average dropped calls percentage: %0.2625, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.143, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 03:44:09 SGT 2012
+Seed = 1332791049923
+Length = 17200.0
+Replications = 200
+Warm-up = 12600.0
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 2493
+Variance of total calls: 2337.291457286432
+Average total dropped calls: 13
+Variance of dropped calls: 25.55778894472362
+Average total blocked calls: 28
+Variance of blocked calls: 42.61306532663317
+Average dropped calls percentage: %0.2587, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1266, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:15:07 SGT 2012
+Seed = 1332792907523
+Length = 17200.0
+Replications = 200
+Channels = 10
+Reserved = 1
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9334
+Variance of total calls: 10167.035175879397
+Average total dropped calls: 52
+Variance of dropped calls: 102.52261306532664
+Average total blocked calls: 106
+Variance of blocked calls: 254.18090452261308
+Average dropped calls percentage: %0.2678, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %1.1421, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:15:32 SGT 2012
+Seed = 1332792932451
+Length = 17200.0
+Replications = 200
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9324
+Variance of total calls: 8172.0
+Average total dropped calls: 76
+Variance of dropped calls: 168.79396984924622
+Average total blocked calls: 40
+Variance of blocked calls: 64.36180904522612
+Average dropped calls percentage: %0.3898, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4305, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:16:27 SGT 2012
+Seed = 1332792987682
+Length = 17200.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9358
+Variance of total calls: 5303.888888888889
+Average total dropped calls: 81
+Variance of dropped calls: 110.0
+Average total blocked calls: 44
+Variance of blocked calls: 106.0
+Average dropped calls percentage: %0.4124, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4766, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:16:45 SGT 2012
+Seed = 1332793005839
+Length = 17200.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9303
+Variance of total calls: 10417.111111111111
+Average total dropped calls: 75
+Variance of dropped calls: 116.55555555555556
+Average total blocked calls: 42
+Variance of blocked calls: 73.11111111111111
+Average dropped calls percentage: %0.3873, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4529, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:16:56 SGT 2012
+Seed = 1332793016242
+Length = 17200.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9352
+Variance of total calls: 6696.0
+Average total dropped calls: 83
+Variance of dropped calls: 52.22222222222222
+Average total blocked calls: 45
+Variance of blocked calls: 86.22222222222223
+Average dropped calls percentage: %0.4206, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.485, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:16:58 SGT 2012
+Seed = 1332793018516
+Length = 17200.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9244
+Variance of total calls: 17505.444444444445
+Average total dropped calls: 72
+Variance of dropped calls: 277.0
+Average total blocked calls: 38
+Variance of blocked calls: 115.77777777777777
+Average dropped calls percentage: %0.3723, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4166, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:00 SGT 2012
+Seed = 1332793020428
+Length = 17200.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 9334
+Variance of total calls: 6446.666666666667
+Average total dropped calls: 68
+Variance of dropped calls: 321.8888888888889
+Average total blocked calls: 38
+Variance of blocked calls: 78.22222222222223
+Average dropped calls percentage: %0.3489, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.413, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:20 SGT 2012
+Seed = 1332793040167
+Length = 21000.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11396
+Variance of total calls: 8089.0
+Average total dropped calls: 93
+Variance of dropped calls: 296.44444444444446
+Average total blocked calls: 50
+Variance of blocked calls: 119.55555555555556
+Average dropped calls percentage: %0.388, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4452, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:29 SGT 2012
+Seed = 1332793049434
+Length = 21000.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11382
+Variance of total calls: 10498.222222222223
+Average total dropped calls: 96
+Variance of dropped calls: 298.44444444444446
+Average total blocked calls: 44
+Variance of blocked calls: 45.666666666666664
+Average dropped calls percentage: %0.4033, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.3943, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:31 SGT 2012
+Seed = 1332793051911
+Length = 21000.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11404
+Variance of total calls: 12023.444444444445
+Average total dropped calls: 101
+Variance of dropped calls: 837.7777777777778
+Average total blocked calls: 54
+Variance of blocked calls: 186.11111111111111
+Average dropped calls percentage: %0.4203, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4816, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:33 SGT 2012
+Seed = 1332793053813
+Length = 21000.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11348
+Variance of total calls: 17669.333333333332
+Average total dropped calls: 95
+Variance of dropped calls: 103.33333333333333
+Average total blocked calls: 50
+Variance of blocked calls: 89.0
+Average dropped calls percentage: %0.3992, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4479, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:35 SGT 2012
+Seed = 1332793055860
+Length = 21000.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11421
+Variance of total calls: 7566.888888888889
+Average total dropped calls: 89
+Variance of dropped calls: 334.6666666666667
+Average total blocked calls: 51
+Variance of blocked calls: 47.55555555555556
+Average dropped calls percentage: %0.3725, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.45, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:17:37 SGT 2012
+Seed = 1332793057898
+Length = 21000.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 11342
+Variance of total calls: 23807.0
+Average total dropped calls: 96
+Variance of dropped calls: 235.0
+Average total blocked calls: 51
+Variance of blocked calls: 133.44444444444446
+Average dropped calls percentage: %0.4024, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4569, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:18:02 SGT 2012
+Seed = 1332793082376
+Length = 604800.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 327639
+Variance of total calls: 176828.66666666666
+Average total dropped calls: 2740
+Variance of dropped calls: 5084.666666666667
+Average total blocked calls: 1461
+Variance of blocked calls: 3113.0
+Average dropped calls percentage: %0.3978, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.446, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 04:18:24 SGT 2012
+Seed = 1332793104945
+Length = 604800.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 327723
+Variance of total calls: 390472.8888888889
+Average total dropped calls: 2750
+Variance of dropped calls: 3335.222222222222
+Average total blocked calls: 1457
+Variance of blocked calls: 1489.3333333333333
+Average dropped calls percentage: %0.3993, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4446, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 05:14:00 SGT 2012
+Seed = 1332796440813
+Length = 604800.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 328065
+Variance of total calls: 803628.7777777778
+Average handover calls: 689846
+Variance of handover calls: 5.417525E7
+Average total dropped calls: 2773
+Variance of dropped calls: 8053.222222222223
+Average total blocked calls: 1469
+Variance of blocked calls: 1383.888888888889
+Average dropped calls percentage: %0.402, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4479, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 05:16:46 SGT 2012
+Seed = 1332796606040
+Length = 604800.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 328138
+Variance of total calls: 268510.6666666667
+Average handover calls: 689950
+Variance of handover calls: 875423.0
+Average total dropped calls: 2782
+Variance of dropped calls: 10497.222222222223
+Average total blocked calls: 1474
+Variance of blocked calls: 1630.7777777777778
+Average dropped calls percentage: %0.4033, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4495, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 05:17:38 SGT 2012
+Seed = 1332796658674
+Length = 10800.0
+Replications = 10
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 5815
+Variance of total calls: 5939.111111111111
+Average handover calls: 12225
+Variance of handover calls: 52548.555555555555
+Average total dropped calls: 41
+Variance of dropped calls: 67.77777777777777
+Average total blocked calls: 23
+Variance of blocked calls: 58.888888888888886
+Average dropped calls percentage: %0.3398, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.3985, QoS requirement (%2.0) SATISFIED
+
+Tue Mar 27 05:17:55 SGT 2012
+Seed = 1332796675736
+Length = 10800.0
+Replications = 100
+Channels = 10
+Reserved = 0
+Call duration mean = 147.352631313131
+Speed mean = 103.8755
+Speed stdev = 16.89781437
+Call interarrival mean = 1.84455837563452
+Average total calls: 5863
+Variance of total calls: 4999.050505050505
+Average handover calls: 12317
+Variance of handover calls: 54053.0505050505
+Average total dropped calls: 49
+Variance of dropped calls: 127.58585858585859
+Average total blocked calls: 25
+Variance of blocked calls: 33.676767676767675
+Average dropped calls percentage: %0.4048, QoS requirement (%1.0) SATISFIED
+Average blocked calls percentage: %0.4266, QoS requirement (%2.0) SATISFIED

@@ -28,8 +28,8 @@ public class BaseStation
     public BaseStation(int id, int channels, int handoverChannels, double position, double coverage)
     {
         this.id = id;
-        this.channels = new ArrayList<Car>();
-        this.handoverChannels = new ArrayList<Car>();
+        this.channels = new ArrayList<>();
+        this.handoverChannels = new ArrayList<>();
         this.position = position * 1000;
         this.coverage = coverage * 1000;
         this.coverageStart = this.position - this.coverage / 2;
@@ -42,7 +42,7 @@ public class BaseStation
 
     public Event initiateCall(Car c)
     {
-        Event result = null;
+        Event result;
         if (freeChannels > 0) {
             result = manipulateCall(c);
             channels.add(c);
@@ -72,7 +72,7 @@ public class BaseStation
 
     private Event receiveHandover(Car c)
     {
-        Event result = null;
+        Event result;
         if (freeChannels > 0) {
             result = manipulateCall(c);
             channels.add(c);
@@ -104,7 +104,7 @@ public class BaseStation
 
     private Event manipulateCall(Car c)
     {
-        Event result = null;
+        Event result;
         double speed = c.getSpeed();
         double callPosition = c.getPosition();
         double duration = c.getDuration();
@@ -117,12 +117,12 @@ public class BaseStation
             c.setDuration(duration);
             c.setTime(arrivalTime);
             c.setPosition(coverageEnd);
-            result = new HandOver(c, this);
+            result = new CallHandOver(c, this);
         }
         else {
             arrivalTime += duration;
             c.setTime(arrivalTime);
-            result = new EndCall(c, this);
+            result = new CallTermination(c, this);
         }
         return result;
     }
