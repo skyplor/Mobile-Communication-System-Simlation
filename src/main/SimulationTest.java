@@ -35,10 +35,11 @@ public class SimulationTest
                 + " java SimulationTest [length] [replication] [warm-up] [channel] [reserved]" + newLine
                 + "length: The time length in seconds of each replication of the simulation" + newLine
                 + "replication: The number of replications" + newLine
+                + "warm-up: The length of warm-up period in seconds" + newLine
                 + "channel: The number of channels in each base station" + newLine
                 + "reserved: The number of reserved channels for handovers in each base station" + newLine;
         try {
-            if (args.length != 4) {
+            if (args.length != 5) {
                 System.out.print(usage);
                 System.exit(-1);
             }
@@ -47,6 +48,7 @@ public class SimulationTest
             long seed = System.currentTimeMillis();
             double length = Double.parseDouble(args[i++]);
             int replication = Integer.parseInt(args[i++]);
+            double warmup = Double.parseDouble(args[i++]);
             int channels = Integer.parseInt(args[i++]);
             int reserved = Integer.parseInt(args[i++]);
             Properties prop = new Properties();
@@ -64,6 +66,7 @@ public class SimulationTest
             String params = "Seed = " + seed + newLine;
             params += "Length = " + length + newLine;
             params += "Replications = " + replication + newLine;
+            params += "Warmup = " + warmup + newLine;
             params += "Channels = " + channels + newLine;
             params += "Reserved = " + reserved + newLine;
             params += "Call duration mean = " + expMean + newLine;
@@ -77,7 +80,7 @@ public class SimulationTest
             RNG rng = new RNG(seed);
             for (int j = 1; j <= replication; j++) {
                 Callable<Statistics> sim = new Simulator(stations, hwLength, channels,
-                        reserved, length, j, rng, normalM,
+                        reserved, length, warmup, j, rng, normalM,
                         expMean, normalStdev, expIaMean);
                 Future<Statistics> future = es.submit(sim);
                 statistics.add(future);
@@ -109,8 +112,8 @@ public class SimulationTest
                     console += ("Handover calls: " + s.getHandovers() + newLine);
                     console += ("Dropped calls: " + s.getDroppedCalls() + newLine);
                     console += ("Blocked calls: " + s.getBlockedCalls() + newLine);
-                    console += ("Dropped calls percentage: %" + df.format(s.getDroppedCallsPercentage()) + newLine);
-                    console += ("Blocked calls percentage: %" + df.format(s.getBlockedCallsPercentage()) + newLine);
+                    console += ("DroppedCallsPercentage: " + df.format(s.getDroppedCallsPercentage()) + newLine);
+                    console += ("BlockedCallsPercentage: " + df.format(s.getBlockedCallsPercentage()) + newLine);
                     console += ("__________________________________" + newLine);
                 }
                 catch (InterruptedException | ExecutionException ex) {

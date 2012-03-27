@@ -43,12 +43,14 @@ public class BaseStation
     public Event initiateCall(Car c)
     {
         Event result;
-        if (freeChannels > 0) {
+        if (freeChannels > 0)
+        {
             result = manipulateCall(c);
             channels.add(c);
             freeChannels--;
         }
-        else {
+        else
+        {
             result = new BlockCall(c, this);
         }
         return result;
@@ -57,12 +59,14 @@ public class BaseStation
     public Event passHandover(Car c, BaseStation b)
     {
         Event result = null;
-        if (channels.contains(c)) {
+        if (channels.contains(c))
+        {
             channels.remove(c);
             freeChannels++;
             result = b.receiveHandover(c);
         }
-        else if (handoverChannels.contains(c)) {
+        else if (handoverChannels.contains(c))
+        {
             handoverChannels.remove(c);
             freeHandoverChannels++;
             result = b.receiveHandover(c);
@@ -73,17 +77,20 @@ public class BaseStation
     private Event receiveHandover(Car c)
     {
         Event result;
-        if (freeChannels > 0) {
+        if (freeChannels > 0)
+        {
             result = manipulateCall(c);
             channels.add(c);
             freeChannels--;
         }
-        else if (freeHandoverChannels > 0) {
+        else if (freeHandoverChannels > 0)
+        {
             result = manipulateCall(c);
             handoverChannels.add(c);
             freeHandoverChannels--;
         }
-        else {
+        else
+        {
             result = new DropCall(c, this);
         }
         return result;
@@ -92,11 +99,13 @@ public class BaseStation
 
     public void endCall(Car c)
     {
-        if (channels.contains(c)) {
+        if (channels.contains(c))
+        {
             channels.remove(c);
             freeChannels++;
         }
-        else if (handoverChannels.contains(c)) {
+        else if (handoverChannels.contains(c))
+        {
             handoverChannels.remove(c);
             freeHandoverChannels++;
         }
@@ -111,7 +120,8 @@ public class BaseStation
         double arrivalTime = c.getTime();
         double callDistance = speed * duration;
 
-        if (callPosition + callDistance > coverageEnd) {
+        if ((callPosition + callDistance > coverageEnd) && (callPosition + callDistance < 40000))
+        {
             duration -= (coverageEnd - callPosition) / speed;
             arrivalTime += (coverageEnd - callPosition) / speed;
             c.setDuration(duration);
@@ -119,7 +129,8 @@ public class BaseStation
             c.setPosition(coverageEnd);
             result = new CallHandOver(c, this);
         }
-        else {
+        else
+        {
             arrivalTime += duration;
             c.setTime(arrivalTime);
             result = new CallTermination(c, this);

@@ -27,6 +27,7 @@ public class Simulator implements Callable<Statistics>
     private double m;
     private double stdev;
     private double length;
+    private double warmup;
     private int id;
     private RNG rng;
     private double coverage;
@@ -37,7 +38,7 @@ public class Simulator implements Callable<Statistics>
     private BaseStation responsibleStation = null;
 
     public Simulator(int stations, double highwayLength, int channels,
-            int reserved, double length, int id, RNG rng,
+            int reserved, double length, double warmup, int id, RNG rng,
             double m, double mean, double stdev, double iaMean)
     {
         this.stations = stations;
@@ -45,6 +46,7 @@ public class Simulator implements Callable<Statistics>
         this.channels = channels - reserved;
         this.reserved = reserved;
         this.length = length;
+        this.warmup = warmup;
         this.id = id;
         this.rng = rng;
         this.m = m;
@@ -128,7 +130,13 @@ public class Simulator implements Callable<Statistics>
 
                 if (e instanceof CallInitiation)
                 {
-                    calls++;
+                    if (clock <= warmup)
+                    {
+                    }
+                    else
+                    {
+                        calls++;
+                    }
                     if (!stopSimulation)
                     {
                         Event ne = createCall();
@@ -140,33 +148,61 @@ public class Simulator implements Callable<Statistics>
                 }
                 else if (e instanceof CallHandOver)
                 {
-                    handovers++;
+                    if (clock <= warmup)
+                    {
+                    }
+                    else
+                    {
+                        handovers++;
+                    }
                     CallHandOver h = (CallHandOver) e;
                     responsibleStation = h.getFrom();
 
                     /*
                      * To make the road a close loop so that all calls will be able to end as expected.
                      * For example, a car starts from the last BaseStation and requires a handover. Without this close loop, the call will have to terminate unexpectedly.
+                     *
+                     * UPDATED: Assignment requires us to terminate the call on reaching the end. This is handled at the BaseStation class
+                     * Once the call is initiated, the function manipulateCall() will check whether to add a handover event or termination event.
+                     * Hence mod (highwayLength * 1000) can be removed.
                      */
-                    h.setPosition(h.getPosition() % (highwayLength * 1000));
+                    h.setPosition(h.getPosition()); // % (highwayLength * 1000));
                     Event next = responsibleStation.passHandover(e.getCar(), baseStations.get(responsibleStation.getId() % stations));
                     fel.put(next.getTime(), next);
                 }
                 else if (e instanceof CallTermination)
                 {
-                    endCalls++;
+                    if (clock <= warmup)
+                    {
+                    }
+                    else
+                    {
+                        endCalls++;
+                    }
                     CallTermination ec = (CallTermination) e;
                     ec.getAt().endCall(e.getCar());
                 }
                 else if (e instanceof DropCall)
                 {
-                    droppedCalls++;
+                    if (clock <= warmup)
+                    {
+                    }
+                    else
+                    {
+                        droppedCalls++;
+                    }
                     DropCall dc = (DropCall) e;
                     dc.getAt().dropCall();
                 }
                 else if (e instanceof BlockCall)
                 {
-                    blockedCalls++;
+                    if (clock <= warmup)
+                    {
+                    }
+                    else
+                    {
+                        blockedCalls++;
+                    }
                     BlockCall bc = (BlockCall) e;
                     bc.getAt().blockCall();
                 }
