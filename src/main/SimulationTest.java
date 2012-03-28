@@ -4,9 +4,7 @@
  */
 package main;
 
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -30,16 +28,24 @@ public class SimulationTest
     public static void main(String[] args)
     {
         FileWriter fw = null;
+        BufferedReader durationInput = null;
+        BufferedReader speedInput = null;
+        BufferedReader interarrivalInput = null;
+        BufferedReader stationInput = null;
+
         String newLine = System.getProperty("line.separator");
         String usage = "USAGE: Start Program using the following command:" + newLine
-                + " java SimulationTest [length] [replication] [warm-up] [channel] [reserved]" + newLine
+                + " java SimulationTest [length] [replication] [warm-up] [channel] [reserved] [type]" + newLine
                 + "length: The time length in seconds of each replication of the simulation" + newLine
                 + "replication: The number of replications" + newLine
                 + "warm-up: The length of warm-up period in seconds" + newLine
                 + "channel: The number of channels in each base station" + newLine
-                + "reserved: The number of reserved channels for handovers in each base station" + newLine;
-        try {
-            if (args.length != 5) {
+                + "reserved: The number of reserved channels for handovers in each base station" + newLine
+                + "type: The type of simulation to be done (0 - deterministic, 1 - stochastic)" + newLine;
+        try
+        {
+            if (args.length != 6)
+            {
                 System.out.print(usage);
                 System.exit(-1);
             }
@@ -51,6 +57,7 @@ public class SimulationTest
             double warmup = Double.parseDouble(args[i++]);
             int channels = Integer.parseInt(args[i++]);
             int reserved = Integer.parseInt(args[i++]);
+            int type = Integer.parseInt(args[i++]);
             Properties prop = new Properties();
 
             prop.load(new FileInputStream("data/simulation.properties"));
@@ -78,12 +85,96 @@ public class SimulationTest
             ArrayList<Future<Statistics>> statistics = new ArrayList<>();
             ExecutorService es = java.util.concurrent.Executors.newFixedThreadPool(replication);
             RNG rng = new RNG(seed);
-            for (int j = 1; j <= replication; j++) {
-                Callable<Statistics> sim = new Simulator(stations, hwLength, channels,
-                        reserved, length, warmup, j, rng, normalM,
-                        expMean, normalStdev, expIaMean);
-                Future<Statistics> future = es.submit(sim);
-                statistics.add(future);
+            if (type == 1)
+            {
+                for (int j = 1; j <= replication; j++)
+                {
+                    Callable<Statistics> sim = new Simulator(stations, hwLength, channels, reserved, length, warmup, j, rng, normalM, expMean, normalStdev, expIaMean);
+                    Future<Statistics> future = es.submit(sim);
+                    statistics.add(future);
+                }
+            }
+            else if (type == 0)
+            {
+                try
+                {
+//                    readFile();
+                    FileReader durationFinput = new FileReader("data/TraceInput/CallDuration.txt");
+                    FileReader speedFinput = new FileReader("data/TraceInput/CarSpeed.txt");
+                    FileReader interarrivalFinput = new FileReader("data/TraceInput/CallInterArrival.txt");
+                    FileReader stationFinput = new FileReader("data/TraceInput/BaseStation.txt");
+
+                    durationInput = new BufferedReader(durationFinput);
+                    speedInput = new BufferedReader(speedFinput);
+                    interarrivalInput = new BufferedReader(interarrivalFinput);
+                    stationInput = new BufferedReader(stationFinput);
+
+                    ArrayList<Double> duration = new ArrayList<>();
+                    ArrayList<Double> speed = new ArrayList<>();
+                    ArrayList<Integer> station = new ArrayList<>();
+                    ArrayList<Double> interarrival = new ArrayList<>();
+                    String line = "";
+                    while ((line = durationInput.readLine()) != null)
+                    {
+                        duration.add(Double.parseDouble(line.trim()));
+                    }
+                    while ((line = speedInput.readLine()) != null)
+                    {
+                        speed.add(Double.parseDouble(line.trim()));
+                    }
+                    while ((line = stationInput.readLine()) != null)
+                    {
+                        station.add(Integer.parseInt(line.trim()));
+                    }
+
+                    while ((line = interarrivalInput.readLine()) != null)
+                    {
+                        interarrival.add(Double.parseDouble(line.trim()));
+                    }
+
+                    for (int j = 1; j <= replication; j++)
+                    {
+                        Callable<Statistics> sim = new Simulator(stations, hwLength, channels, reserved, length, warmup, j, rng, duration, speed, station, interarrival, 0);
+
+                        Future<Statistics> future = es.submit(sim);
+                        statistics.add(future);
+                    }
+                }
+                catch (FileNotFoundException | SecurityException e)
+                {
+                    e.printStackTrace();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+                finally
+                {
+                    //close the stream to release system resources
+                    try
+                    {
+                        if (durationInput != null)
+                        {
+                            durationInput.close();
+                        }
+                        if (speedInput != null)
+                        {
+                            speedInput.close();
+                        }
+                        if (stationInput != null)
+                        {
+                            stationInput.close();
+                        }
+                        if (interarrivalInput != null)
+                        {
+                            interarrivalInput.close();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             DecimalFormat df = new DecimalFormat("####.####");
@@ -97,8 +188,10 @@ public class SimulationTest
             String output = newLine + (new java.util.Date()).toString() + newLine;
             String console = "";
             output += params;
-            for (Future<Statistics> future : statistics) {
-                try {
+            for (Future<Statistics> future : statistics)
+            {
+                try
+                {
                     Statistics s = future.get();
                     results.add(s);
                     accumDc += s.getDroppedCalls();
@@ -116,8 +209,9 @@ public class SimulationTest
                     console += ("BlockedCallsPercentage: " + df.format(s.getBlockedCallsPercentage()) + newLine);
                     console += ("__________________________________" + newLine);
                 }
-                catch (InterruptedException | ExecutionException ex) {
-                    Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
+                catch (InterruptedException | ExecutionException ex)
+                {
+                    Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, "Hello", ex);
                 }
             }
             double avgTc = (double) (accumTc / replication);
@@ -129,7 +223,8 @@ public class SimulationTest
             double bcVar = 0;
             double hcVar = 0;
 
-            for (Statistics s : results) {
+            for (Statistics s : results)
+            {
                 tcVar += Math.pow(avgTc - s.getTotalCalls(), 2);
                 hcVar += Math.pow(avgHc - s.getHandovers(), 2);
                 dcVar += Math.pow(avgDc - s.getDroppedCalls(), 2);
@@ -156,17 +251,30 @@ public class SimulationTest
             fw = new FileWriter("data/output.txt", true);
             fw.write(output);
         }
-        catch (IOException ex) {
+        catch (IOException ex)
+        {
             Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally {
-            try {
-                fw.close();
+        finally
+        {
+            try
+            {
+                if (fw != null)
+                {
+                    fw.close();
+
+                }
             }
-            catch (IOException ex) {
+            catch (IOException ex)
+            {
                 Logger.getLogger(SimulationTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         System.exit(0);
+    }
+
+    private static ArrayList readFile(FileReader reader, ArrayList inputArray) throws IOException
+    {
+        return inputArray;
     }
 }

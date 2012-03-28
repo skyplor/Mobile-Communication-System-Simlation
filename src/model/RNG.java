@@ -52,6 +52,17 @@ public class RNG
         double result = b * nextRand();
         return result;
     }
+    
+    /**
+     * Return real number uniformly in [a, b).
+     * 
+     * @param a Minimum range value
+     * @param b Maximum range value
+     * @return The next uniformly distributed value between a and b
+     */
+    public synchronized double nextUniform(double a, double b) {
+        return a + nextRand() * (b-a);
+    }
 
     /**
      * Generates a normally distributed random value with mean m and standard deviation stdev for the speed of the car

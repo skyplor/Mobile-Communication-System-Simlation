@@ -24,8 +24,9 @@ public class BaseStation
     private double coverage;
     private int droppedCalls;
     private int blockedCalls;
+    private double length;
 
-    public BaseStation(int id, int channels, int handoverChannels, double position, double coverage)
+    public BaseStation(int id, int channels, int handoverChannels, double position, double coverage, double length)
     {
         this.id = id;
         this.channels = new ArrayList<>();
@@ -38,6 +39,7 @@ public class BaseStation
         this.freeHandoverChannels = handoverChannels;
         this.droppedCalls = 0;
         this.blockedCalls = 0;
+        this.length = length;
     }
 
     public Event initiateCall(Car c)
@@ -120,7 +122,7 @@ public class BaseStation
         double arrivalTime = c.getTime();
         double callDistance = speed * duration;
 
-        if ((callPosition + callDistance > coverageEnd) && (callPosition + callDistance < 40000))
+        if ((callPosition + callDistance > coverageEnd) && (callPosition + callDistance < 40000)) //&& (arrivalTime + duration) < length)
         {
             duration -= (coverageEnd - callPosition) / speed;
             arrivalTime += (coverageEnd - callPosition) / speed;
@@ -132,6 +134,10 @@ public class BaseStation
         else
         {
             arrivalTime += duration;
+//            if (arrivalTime > length)
+//            {
+//                arrivalTime = length - 0.1;
+//            }
             c.setTime(arrivalTime);
             result = new CallTermination(c, this);
         }
