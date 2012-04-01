@@ -24,6 +24,12 @@ public class BlockCall extends Event
         return at;
     }
 
+    /**
+     * Sets the BaseStation in which this block call occurs
+     * 
+     * @param at BaseStation
+     * 
+     */
     public void setAt(BaseStation at)
     {
         this.at = at;

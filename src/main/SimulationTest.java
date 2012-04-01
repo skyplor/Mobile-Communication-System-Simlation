@@ -98,7 +98,6 @@ public class SimulationTest
             {
                 try
                 {
-//                    readFile();
                     FileReader durationFinput = new FileReader("data/TraceInput/CallDuration.txt");
                     FileReader speedFinput = new FileReader("data/TraceInput/CarSpeed.txt");
                     FileReader interarrivalFinput = new FileReader("data/TraceInput/CallInterArrival.txt");
@@ -271,10 +270,5 @@ public class SimulationTest
             }
         }
         System.exit(0);
-    }
-
-    private static ArrayList readFile(FileReader reader, ArrayList inputArray) throws IOException
-    {
-        return inputArray;
     }
 }

@@ -64,7 +64,7 @@ public class Simulator implements Callable<Statistics>
         for (int i = 0; i < stations; i++)
         {
             double pos = ((i + 1) * coverage) - 1;
-            baseStations.add(new BaseStation(i + 1, this.channels, this.reserved, pos, coverage, this.length));
+            baseStations.add(new BaseStation(i + 1, this.channels, this.reserved, pos, coverage));
         }
         this.fel = new TreeMap<>();
 
@@ -92,7 +92,7 @@ public class Simulator implements Callable<Statistics>
         for (int i = 0; i < stations; i++)
         {
             double pos = ((i + 1) * coverage) - 1;
-            baseStations.add(new BaseStation(i + 1, this.channels, this.reserved, pos, coverage, this.length));
+            baseStations.add(new BaseStation(i + 1, this.channels, this.reserved, pos, coverage));
         }
         this.fel = new TreeMap<>();
     }
@@ -110,8 +110,6 @@ public class Simulator implements Callable<Statistics>
             double callDuration = duration.get(inputFileRow);
             double drivingSpeed = speed.get(inputFileRow) * 3600 / 1000;
             result = new CallInitiation(new Car(++totalCalls, arrivalTime, carposition, callDuration, drivingSpeed));
-//            System.out.println("InputFileRow: " + inputFileRow);
-//            System.out.println("Total Calls: " + totalCalls);
             if (inputFileRow <= 199)
             {
                 inputFileRow++;
@@ -172,10 +170,6 @@ public class Simulator implements Callable<Statistics>
                 }
 
                 fw.write(nf.format((double) accumTime / ws.size()) + "\t" + nf.format((double) accumDc / ws.size()) + "\t" + nf.format((double) accumBc / ws.size()) + "\n");
-//                if (clock ==)
-//                {
-//                    fw.write(nf.format(clock) + "\t" + nf.format((double) calls) + "\n");
-//                }
 
                 if (clock >= length)
                 {
